@@ -64,6 +64,12 @@ const modifierKeys = {
   ArrowRight: rightArrowKey,
 };
 
+document.addEventListener('DOMContentLoaded', function () {
+  const pageFocus = document.getElementById('pageFocus');
+  pageFocus.focus();
+  textInput.focus();
+});
+
 keys.forEach((key) => {
   const keyText = key.innerText.trim();
   const keySplit = keyText.split('\n');
@@ -277,7 +283,7 @@ searchForm.addEventListener('submit', function (e) {
   const query = textInput.value.trim();
 
   if (!isValidUrl(query)) {
-    searchForm.action = 'https://duckduckgo.com/';
+    searchForm.action = 'https://google.com/search';
     searchForm.submit();
   }
 });
