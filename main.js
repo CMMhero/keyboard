@@ -38,6 +38,7 @@ const pgUpKey = document.querySelector('.key_pgup');
 const pgDnKey = document.querySelector('.key_pgdn');
 
 const body = document.querySelector('body');
+const searchForm = document.getElementById('searchForm');
 const textInput = document.querySelector('.text');
 
 // Create an object to store the state of key modifiers
@@ -268,3 +269,31 @@ setInterval(updateDateTime, 1000);
 
 // Call the function immediately to display the initial time
 updateDateTime();
+
+textInput.focus();
+searchForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const query = textInput.value.trim();
+
+  if (!isValidUrl(query)) {
+    searchForm.action = 'https://duckduckgo.com/';
+    searchForm.submit();
+  }
+});
+
+function isValidUrl(url) {
+  const pattern = /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/i;
+
+  if (pattern.test(url)) {
+    // Check if the URL starts with "http://" or "https://"
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      // If not, prepend "https://"
+      url = 'https://' + url;
+    }
+    window.location.href = url; // Set window.location.href to the valid URL
+    return url;
+  } else {
+    return false;
+  }
+}
