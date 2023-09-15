@@ -147,7 +147,7 @@ body {
 	position: relative;
 	font-style: normal;
 	font-size: 1.1em;
-	text-transform: lowercase;
+	/* text-transform: lowercase; */
 }
 
 .knob {
