@@ -78,14 +78,14 @@ function simulateKeyPress(key) {
   // key.classList.add('active');
   // setTimeout(() => {
   //   key.classList.remove('remove');
-  // }, 250);
+  // }, 200);
 
   const keyEvent = new KeyboardEvent('keydown', { key: key });
   document.dispatchEvent(keyEvent);
   setTimeout(() => {
     const keyEvent2 = new KeyboardEvent('keyup', { key: key });
     document.dispatchEvent(keyEvent2);
-  }, 250);
+  }, 200);
 
   // console.log(key);
 
@@ -189,6 +189,8 @@ document.addEventListener('keyup', (e) => {
 
     keyName = key.getAttribute('keyname');
 
+    if (keyName === "Control" || keyName === "Alt" || keyName === "Shift") return;
+
     if (key.getAttribute('specialKeyname')) {
       specialKeyName = key.getAttribute('specialKeyname');
       switch (e.key) {
@@ -198,7 +200,7 @@ document.addEventListener('keyup', (e) => {
           key.classList.add('remove');
           setTimeout(() => {
             key.classList.remove('remove');
-          }, 250);
+          }, 200);
       }
     }
 
@@ -209,7 +211,7 @@ document.addEventListener('keyup', (e) => {
         key.classList.add('remove');
         setTimeout(() => {
           key.classList.remove('remove');
-        }, 250);
+        }, 200);
     }
   });
 
@@ -235,7 +237,7 @@ document.addEventListener('keyup', (e) => {
       modifierKeys[e.code].classList.add('remove');
       setTimeout(() => {
         modifierKeys[e.code].classList.remove('remove');
-      }, 250);
+      }, 200);
       break;
   }
 
@@ -245,7 +247,7 @@ document.addEventListener('keyup', (e) => {
       functionKey.classList.add('remove');
       setTimeout(() => {
         functionKey.classList.remove('remove');
-      }, 250);
+      }, 200);
     }
   });
 });
